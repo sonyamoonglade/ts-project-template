@@ -1,5 +1,5 @@
-import fs from "fs/promises";
-import yaml from 'js-yaml'
+import fs from "fs/promises"
+import yaml from "js-yaml"
 
 export type AppConfig = {
     app: {}
@@ -7,12 +7,12 @@ export type AppConfig = {
 
 export const readConfig = async (path: string): Promise<AppConfig> => {
     try {
-        const buff = await fs.readFile(path, {encoding: "utf-8"})
+        const buff = await fs.readFile(path, { encoding: "utf-8" })
         const doc = yaml.load(buff) as any
         const cfg: AppConfig = {
             app: {
                 // use doc?.param here
-            }
+            },
         }
         validateUndefined(cfg)
         return cfg
